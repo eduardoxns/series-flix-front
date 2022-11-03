@@ -11,7 +11,7 @@ _**NOTE**: if you dont have angular, please use the following command before use
 `npm install -g @angular/cli`
 1. Clone de project and into in the folder;
 2. Install the project dependencies using:
-`nmp install`
+`npm install`
 3. Execute `ng server` to deploy angular app.
 
 ## Known troubleshoots:
