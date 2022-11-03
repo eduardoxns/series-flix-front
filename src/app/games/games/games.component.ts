@@ -15,7 +15,7 @@ export class GamesComponent implements OnInit {
   games:any;
 
   ngOnInit(){
-    this.http.get('http://localhost:4566/restapis/d4ndye49hp/local/_user_request_/games').subscribe(
+    this.http.get('http://localhost:4566/restapis/nw5tgu66rw/local/_user_request_/games').subscribe(
       data => {
         this.games = data;
       }

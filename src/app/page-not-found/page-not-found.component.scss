@@ -4,18 +4,17 @@
   align-items: center;
   flex-flow: column;
   justify-content: center;
-}
 
-._404 {
-  font-size: 150px;
-  font-weight: bold;
-  color: var(--verde);
-  letter-spacing: 15px;
-  line-height: initial;
-  margin: 0;
-}
-
-.sub {
-  font-size: 16px;
-  margin: 0 0 45px 0;
+    ._404 {
+      font-size: 150px;
+      font-weight: bold;
+      letter-spacing: 15px;
+      line-height: initial;
+      margin: 0;
+    }
+  
+    .sub {
+      font-size: 16px;
+      margin: 0 0 45px 0;
+    }
 }

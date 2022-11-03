@@ -14,7 +14,7 @@ export class SeriesComponent implements OnInit {
   series:any;
 
   ngOnInit(){
-    this.http.get('http://localhost:4566/restapis/d4ndye49hp/local/_user_request_/series').subscribe(
+    this.http.get('http://localhost:4566/restapis/nw5tgu66rw/local/_user_request_/series').subscribe(
       data => {
         this.series = data;
       }
