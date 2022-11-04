@@ -1,9 +1,9 @@
 
 <div class="row" style="justify-content: center;">
 
-  <div class="card col-sm-3" style="width: 15rem;" *ngFor="let item of series">
+  <div class="card col-sm-3" *ngFor="let item of series" (click)="pickItem(item)" data-bs-toggle="modal" data-bs-target="#update">
     <h5 class="card-title">{{ item.title }}</h5>
-    <img src="https://images.justwatch.com/poster/177867069/s718/sherlock.%7Bformat%7D" class="card-img-top">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" class="card-img-top">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Category: {{ item.category }}</li>
       <li class="list-group-item">Synopsis: {{ item.synopsis }}</li>
@@ -11,6 +11,106 @@
       <li class="list-group-item">Rating: {{ item.rating }}</li>
       <li class="list-group-item">Launch Date: {{ item.launch_date }}</li>
     </ul>
+  </div>
+
+  <div class="modal fade" id="update" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">  
+          <h4 class="modal-title" id="update"><b>UPDATE ITEM</b></h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-sm-12 mb-2">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" #updateName>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="category" class="col-form-label">Category:</label>
+              <input type="text" class="form-control" #updateCategory>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Launch Date:</label>
+              <input type="date" class="form-control" #updateLaunchDate>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Seasons:</label>
+              <input type="number" class="form-control" #updateSeasons>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Rating:</label>
+              <input type="number" class="form-control" #updateRating>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <label for="platform" class="col-form-label">Synopsis:</label>
+              <textarea style="resize:none" rows="3" class="form-control" #updateSynopsis></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="updateItem()">Update</button>
+          <button type="button" class="btn btn-danger" (click)="deleteItem()">Delete</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card col-sm-3 justify-content-center" data-bs-target="#add-item" data-bs-toggle="modal">
+    <h1 class="add" style="font-size: 650%">+</h1>
+  </div>
+
+  <div class="modal fade" id="add-item" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">  
+          <h4 class="modal-title" id="add-item">ADD NEW ITEM</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-sm-12 mb-2">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" #createName>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="category" class="col-form-label">Category:</label>
+              <input type="text" class="form-control" #createCategory>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Launch Date:</label>
+              <input type="date" class="form-control" #createLaunchDate>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Seasons:</label>
+              <input type="number" class="form-control" #createSeasons>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Rating:</label>
+              <input type="number" class="form-control" #createRating>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <label for="platform" class="col-form-label">Synopsis:</label>
+              <textarea style="resize:none" rows="3" class="form-control" #createSynopsis></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="createItem()">Create</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies.component.scss']
 })
 
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements AfterViewInit {
 
   constructor(private http: HttpClient) { }
 
-  movies:any;
+  @ViewChild('updateName') updateName: ElementRef;
+  @ViewChild('updateGender') updateGender: ElementRef;
+  @ViewChild('updateDuration') updateDuration: ElementRef;
+  @ViewChild('updateRating') updateRating: ElementRef;
 
-  ngOnInit(){
-    this.http.get('http://localhost:4566/restapis/nw5tgu66rw/local/_user_request_/movies').subscribe(
+  @ViewChild('createName') createName: ElementRef;
+  @ViewChild('createGender') createGender: ElementRef;
+  @ViewChild('createDuration') createDuration: ElementRef;
+  @ViewChild('createRating') createRating: ElementRef;
+
+  movies:any;
+  itemId:any;
+
+  ngAfterViewInit(){
+    this.http.get(environment.apiUrl + '/movies').subscribe(
       data => {
         this.movies = data;
       }
     )
+  }
+
+  pickItem(item: any){ this.itemId = item.id }
+  
+  updateItem(){
+    this.http.put(environment.apiUrl + '/movies/' + this.itemId,
+    {
+      nome: this.updateName.nativeElement.value,
+      gender: this.updateGender.nativeElement.value,
+      duration: this.updateDuration.nativeElement.value,
+      rating: this.updateRating.nativeElement.value
+    }).subscribe(() => {
+      window.location.reload()
+    })
+  }
+  deleteItem(){
+    this.http.delete(environment.apiUrl + '/movies/' + this.itemId)
+    .subscribe(() => {
+      window.location.reload()
+    })
+  }
+  createItem(){
+    this.http.post(environment.apiUrl + '/movies/',
+    {
+      nome: this.createName.nativeElement.value,
+      gender: this.createGender.nativeElement.value,
+      duration: this.createDuration.nativeElement.value,
+      rating: this.createRating.nativeElement.value
+    }).subscribe(() => {
+      window.location.reload()
+    })
   }
 }

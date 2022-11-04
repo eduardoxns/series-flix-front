@@ -2,10 +2,32 @@
 .card{
     background-color: black;
     text-align: center;
+    justify-content: center;
     margin: 2%;
+    width: 15rem;
+    font-weight: 700;
+    transition: transform 0.2s;
+
+    .card-title{ color: red }
 
     .list-group-item{
         background-color: black;
         color: white;
     }
+
+    .add{
+        font-weight: 700;
+        color: red;
+    }
+}
+.card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.modal-content{
+    background-color: #1F1F1F;
+    font-weight: 650;
+
+    input{ font-weight: 700 }
 }

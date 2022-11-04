@@ -1,14 +1,98 @@
 
 <div class="row" style="justify-content: center;">
 
-  <div class="card col-sm-3" style="width: 15rem;" *ngFor="let item of games">
-    <h5 class="card-title">{{ item.game_name }}</h5>
-    <img src="https://m.media-amazon.com/images/I/81vi7OqaZ7L._AC_SL1500_.jpg" class="card-img-top">
+  <div class="card col-sm-3" *ngFor="let item of games" (click)="pickItem(item)" data-bs-toggle="modal" data-bs-target="#update">
+    <h4 class="card-title"><b>{{ item.game_name }}</b></h4>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" class="card-img-top">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Category: {{ item.category }}</li>
       <li class="list-group-item">Platform: {{ item.platform }}</li>
       <li class="list-group-item">Rating: {{ item.rating }}</li>
     </ul>
+  </div>
+  
+  <div class="modal fade" id="update" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">  
+          <h4 class="modal-title" id="update"><b>UPDATE ITEM</b></h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-sm-12 mb-2">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" #updateName>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <label for="category" class="col-form-label">Category:</label>
+              <input type="text" class="form-control" #updateCategory>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="platform" class="col-form-label">Platform:</label>
+              <input type="text" class="form-control" #updatePlatform>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Rating:</label>
+              <input type="number" class="form-control" #updateRating>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="updateItem()">Update</button>
+          <button type="button" class="btn btn-danger" (click)="deleteItem()">Delete</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card col-sm-3 justify-content-center" data-bs-target="#add-item" data-bs-toggle="modal">
+    <h1 class="add" style="font-size: 650%">+</h1>
+  </div>
+
+  <div class="modal fade" id="add-item" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">  
+          <h4 class="modal-title" id="add-item">ADD NEW ITEM</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-sm-12 mb-2">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" #createName>
+            </div>
+            <div class="col-sm-12 mb-2">
+              <label for="category" class="col-form-label">Category:</label>
+              <input type="text" class="form-control" #createCategory>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="platform" class="col-form-label">Platform:</label>
+              <input type="text" class="form-control" #createPlatform>
+            </div>
+            <div class="col-sm-6 mb-2">
+              <label for="rating" class="col-form-label">Rating:</label>
+              <input type="number" class="form-control" #createRating>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="createItem()">Create</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
 </div>
